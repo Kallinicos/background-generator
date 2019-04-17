@@ -1,0 +1,34 @@
+var css = document.querySelector("h3");
+var color1 = document.querySelector(".color1");
+var color2 = document.querySelector(".color2");
+var body = document.getElementById("gradient");
+
+function setGradient() {
+	body.style.background = 
+	"linear-gradient(to right, " + color1.value + ", " + color2.value + ")";
+	css.textContent = body.style.background + ";";
+}
+
+var button = document.createElement("button");
+button.appendChild(document.createTextNode("Select Random Color"));
+body.appendChild(button);
+
+function randomColor() {
+ 	var color = "rgb(" + (Math.floor(Math.random() * 256)) + "," + (Math.floor(Math.random() * 256)) + "," + (Math.floor(Math.random() * 256)) + ")";
+  	return color;
+}
+
+function getRandomColor() {
+ 	var rndColor1 = randomColor();
+ 	var rndColor2 = randomColor();
+ 	body.style.background = "linear-gradient(to right, " + rndColor1 + ", " + rndColor2 +")";
+ 	css.textContent = body.style.background + ";";
+}
+
+color1.addEventListener("input", setGradient);
+color2.addEventListener("input", setGradient);
+
+color1.addEventListener("input", setGradient());
+color2.addEventListener("input", setGradient());
+
+button.addEventListener("click", getRandomColor);
